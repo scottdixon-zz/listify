@@ -10,6 +10,7 @@ class Listify
       title = "Cream"
     else
     end
+    title.capitalize!
     @list.push({title: title, qty: qty})
   end
   def pretty_list

@@ -33,4 +33,15 @@ class ListifyTest < Test::Unit::TestCase
     shopping.remove_last_item
     assert_equal(shopping.pretty_list, "2 x Milk\n");
   end
+  def test_capitalize_item
+    shopping = Listify.new
+    shopping.add_item("milk", 2)
+    assert_equal(shopping.pretty_list, "2 x Milk\n");
+  end
+  def test_merge_items
+    shopping = Listify.new
+    shopping.add_item("Milk", 1)
+    shopping.add_item("Milk", 1)
+    assert_equal(shopping.pretty_list, "2 x Milk\n");
+  end
 end
