@@ -1,5 +1,6 @@
 require 'test/unit'
 require_relative 'listify'
+require_relative 'new_list'
 
 class ListifyTest < Test::Unit::TestCase
   def test_empty_list
@@ -44,7 +45,12 @@ class ListifyTest < Test::Unit::TestCase
     shopping.add_item("Bread", 1)
     assert_equal(shopping.pretty_list, "2 x Bread\n");
   end
-  def save_to_file
-
+  def test_save_to_file
+    shopping = Listify.new
+    shopping.add_item("Bread", 1)
+    shopping.save_to_file
+    file = File.open("new_list.rb", "r")
+    contents = file.read
+    assert_equal(contents, "[{:title=>\"Bread\", :qty=>1}]");
   end
 end

@@ -1,8 +1,10 @@
 class Listify
   attr_accessor :list
+
   def initialize
     @list = []
   end
+
   def add_item(title, qty)
     if title == "Coke"
       title = "Water"
@@ -25,15 +27,6 @@ class Listify
      end
   end
 
-    #
-    # @list.each do |item|
-    #   if title == item[:title]
-    #     item[:qty] = item[:qty] + qty
-    #   end
-    # end
-    #
-    # @list.push({title: title, qty: qty})
-
   def pretty_list
     pretty_list = ''
     @list.each do |item|
@@ -42,8 +35,13 @@ class Listify
     end
     return pretty_list
   end
+
   def remove_last_item
     @list.pop
+  end
+
+  def save_to_file
+    File.write("new_list.rb", @list)
   end
 
 end
