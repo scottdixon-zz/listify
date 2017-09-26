@@ -13,8 +13,8 @@ class ListifyTest < Test::Unit::TestCase
   end
   def test_pretty_list
     shopping = Listify.new
-    shopping.add_item("Milk", 2)
-    assert_equal(shopping.pretty_list, "2 x Milk\n");
+    shopping.add_item("Banana", 2)
+    assert_equal(shopping.pretty_list, "2 x Banana\n");
   end
   def test_replace_coke_with_water
     shopping = Listify.new
@@ -24,7 +24,7 @@ class ListifyTest < Test::Unit::TestCase
 
   def test_replace_milk_with_chocolate
     shopping = Listify.new
-    shopping.add_item("Bread", 2)
+    shopping.add_item("Milk", 2)
     assert_equal(shopping.pretty_list, "2 x Chocolate\n");
   end
 
@@ -36,14 +36,17 @@ class ListifyTest < Test::Unit::TestCase
     assert_equal(shopping.pretty_list, "2 x Wine\n");
   end
 
-  def capitalize_list
+  def test_capitalize_list
     shopping = Listify.new
     shopping.add_item("gravy", 2)
     assert_equal(shopping.pretty_list, "2 x Gravy\n");
   end
 
-  # def merge_items
-  #   shopping = Listify.new
-  #   shopping.add_item("")
-  # end
+  def test_merge_item
+    shopping = Listify.new
+    shopping.add_item("Lollies", 2)
+    shopping.add_item("Lollies", 1)
+
+    assert_equal(shopping.pretty_list, "3 x Lollies\n");
+  end
 end
