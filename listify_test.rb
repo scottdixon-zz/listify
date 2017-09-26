@@ -6,6 +6,13 @@ class ListifyTest < Test::Unit::TestCase
     shopping = Listify.new
     assert_equal(shopping.list, [])
   end
+
+def test_list_title
+  shopping=Listify.new
+  shopping.title= "Shopping List"
+  assert_equal(shopping.title, "Shopping List")
+end
+
   def test_add_item
     shopping = Listify.new
     shopping.add_item("Coke", 2)
@@ -17,6 +24,32 @@ class ListifyTest < Test::Unit::TestCase
     assert_equal(shopping.pretty_list, "2 x Milk\n");
   end
   def test_replace_coke_with_water
+    shopping = Listify.new
+    shopping.add_item("Coke", 2)
+    assert_equal(shopping.pretty_list, "2 x Water\n");
     # Write your first test here
   end
+
+  def test_remove_item
+    shopping = Listify.new
+    shopping.add_item("Bread", 2)
+    shopping.add_item("Water", 2)
+    shopping.remove_item
+    assert_equal(shopping.pretty_list, "2 x Bread\n");
+  end
+
+  def test_capatalize_item
+    shopping = Listify.new
+    shopping.add_item("bread", 2)
+    assert_equal(shopping.pretty_list, "2 x Bread\n");
+  end
+
+  def add_item
+    shopping = Listify.new
+    shopping.add_item("Bread", 2)
+    shopping.add_item("Bread", 2)
+    assert_equal(shopping.pretty_list, "4 x Bread\n");
+  end
+
+
 end
