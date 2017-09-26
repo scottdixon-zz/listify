@@ -4,6 +4,9 @@ class Listify
     @list = []
   end
   def add_item (title, qty)
+    if title == "Coke"
+      title = "Water"
+    end
     @list.push({title: title, qty: qty})
   end
   def pretty_list
