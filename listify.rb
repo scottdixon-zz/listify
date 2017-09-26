@@ -13,7 +13,7 @@ class Listify
     if title == "Bread"
       title = "Chocolate"
     end
-    @list.push({title: title, qty: qty})
+    @list.push({title: title.capitalize, qty: qty})
   end
 
   def remove_item

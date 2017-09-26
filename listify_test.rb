@@ -31,9 +31,19 @@ class ListifyTest < Test::Unit::TestCase
   def test_remove_last_item
     shopping = Listify.new
     shopping.add_item("Wine", 2)
-    shopping.add_item("brine", 1)
+    shopping.add_item("Brine", 1)
     shopping.remove_item
     assert_equal(shopping.pretty_list, "2 x Wine\n");
-
   end
+
+  def capitalize_list
+    shopping = Listify.new
+    shopping.add_item("gravy", 2)
+    assert_equal(shopping.pretty_list, "2 x Gravy\n");
+  end
+
+  # def merge_items
+  #   shopping = Listify.new
+  #   shopping.add_item("")
+  # end
 end
