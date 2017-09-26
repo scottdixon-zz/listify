@@ -17,6 +17,8 @@ class ListifyTest < Test::Unit::TestCase
     assert_equal(shopping.pretty_list, "2 x Milk\n");
   end
   def test_replace_coke_with_water
-    # Write your first test here
+    shopping = Listify.new
+    shopping.add_item("Coke", 2)
+    assert_equal(shopping.pretty_list, "2 x Water\n");
   end
 end
