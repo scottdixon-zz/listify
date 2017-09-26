@@ -27,4 +27,13 @@ class ListifyTest < Test::Unit::TestCase
     shopping.add_item("Bread", 2)
     assert_equal(shopping.pretty_list, "2 x Chocolate\n");
   end
+
+  def test_remove_last_item
+    shopping = Listify.new
+    shopping.add_item("Wine", 2)
+    shopping.add_item("brine", 1)
+    shopping.remove_item
+    assert_equal(shopping.pretty_list, "2 x Wine\n");
+
+  end
 end
