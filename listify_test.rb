@@ -40,8 +40,11 @@ class ListifyTest < Test::Unit::TestCase
   end
   def test_merge_items
     shopping = Listify.new
-    shopping.add_item("Milk", 1)
-    shopping.add_item("Milk", 1)
-    assert_equal(shopping.pretty_list, "2 x Milk\n");
+    shopping.add_item("Bread", 1)
+    shopping.add_item("Bread", 1)
+    assert_equal(shopping.pretty_list, "2 x Bread\n");
+  end
+  def save_to_file
+
   end
 end
