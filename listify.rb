@@ -1,11 +1,28 @@
 class Listify
-  attr_accessor :list
+  attr_accessor :list, :title
   def initialize
     @list = []
   end
+
   def add_item (title, qty)
-    @list.push({title: title, qty: qty})
+    if title == "Coke"
+      title = "Water"
+    end
+
+    merged = false
+    @list.each_with_index do |item, index|
+      if item[:title] == title
+        @list[index][:qty] += qty
+        merged = true
+      end
+    end
+
+    if !merged
+      @list.push({ title: title.capitalize, qty: qty })
+    end
+    # @list.push({title: title.capitalize, qty: qty})
   end
+
   def pretty_list
     pretty_list = ''
     @list.each do |item|
@@ -13,4 +30,12 @@ class Listify
     end
     return pretty_list
   end
+  def remove_item
+    @list.pop
+  end
+
+  def file_saver
+    File.write("#{Shopping_list}.rb", @output["result"])
+  end
+  
 end
