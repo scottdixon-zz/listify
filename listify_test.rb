@@ -1,5 +1,6 @@
 require 'test/unit'
 require_relative 'listify'
+require_relative 'new_list'
 
 class ListifyTest < Test::Unit::TestCase
   def test_empty_list
@@ -17,6 +18,39 @@ class ListifyTest < Test::Unit::TestCase
     assert_equal(shopping.pretty_list, "2 x Milk\n");
   end
   def test_replace_coke_with_water
-    # Write your first test here
+    shopping = Listify.new
+    shopping.add_item("Coke", 2)
+    assert_equal(shopping.pretty_list, "2 x Water\n");
+  end
+  def test_replace_milk_with_cream
+    shopping = Listify.new
+    shopping.add_item("Butter", 2)
+    assert_equal(shopping.pretty_list, "2 x Cream\n");
+  end
+  def test_remove_last_item
+    shopping = Listify.new
+    shopping.add_item("Milk", 2)
+    shopping.add_item("Eggs", 2)
+    shopping.remove_last_item
+    assert_equal(shopping.pretty_list, "2 x Milk\n");
+  end
+  def test_capitalize_item
+    shopping = Listify.new
+    shopping.add_item("milk", 2)
+    assert_equal(shopping.pretty_list, "2 x Milk\n");
+  end
+  def test_merge_items
+    shopping = Listify.new
+    shopping.add_item("Bread", 1)
+    shopping.add_item("Bread", 1)
+    assert_equal(shopping.pretty_list, "2 x Bread\n");
+  end
+  def test_save_to_file
+    shopping = Listify.new
+    shopping.add_item("Bread", 1)
+    shopping.save_to_file
+    file = File.open("new_list.rb", "r")
+    contents = file.read
+    assert_equal(contents, "[{:title=>\"Bread\", :qty=>1}]");
   end
 end
