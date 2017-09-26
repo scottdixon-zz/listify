@@ -17,6 +17,33 @@ class ListifyTest < Test::Unit::TestCase
     assert_equal(shopping.pretty_list, "2 x Milk\n");
   end
   def test_replace_coke_with_water
-    # Write your first test here
+    shopping = Listify.new
+    shopping.add_item("Water", 2)
+    assert_equal(shopping.pretty_list, "2 x Coke\n");
   end
+
+  def test_replace_milk_with_chocolate
+    shopping = Listify.new
+    shopping.add_item("Bread", 2)
+    assert_equal(shopping.pretty_list, "2 x Chocolate\n");
+  end
+
+  def test_remove_last_item
+    shopping = Listify.new
+    shopping.add_item("Wine", 2)
+    shopping.add_item("Brine", 1)
+    shopping.remove_item
+    assert_equal(shopping.pretty_list, "2 x Wine\n");
+  end
+
+  def capitalize_list
+    shopping = Listify.new
+    shopping.add_item("gravy", 2)
+    assert_equal(shopping.pretty_list, "2 x Gravy\n");
+  end
+
+  # def merge_items
+  #   shopping = Listify.new
+  #   shopping.add_item("")
+  # end
 end

@@ -3,9 +3,24 @@ class Listify
   def initialize
     @list = []
   end
+
   def add_item (title, qty)
-    @list.push({title: title, qty: qty})
+
+    if title == "Water"
+      title = "Coke"
+    end
+
+    if title == "Bread"
+      title = "Chocolate"
+    end
+    @list.push({title: title.capitalize, qty: qty})
   end
+
+  def remove_item
+    @list.pop
+  end
+
+
   def pretty_list
     pretty_list = ''
     @list.each do |item|
